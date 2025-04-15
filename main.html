@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hostel Stitching Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f8f8f8;
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #4CAF50;
+      margin-bottom: 1rem;
+    }
+    .chart-section {
+      background: white;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    canvas {
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+    .service-options {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.5rem;
+      flex: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card h3 {
+      margin-bottom: 0.5rem;
+    }
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    form input, form select, form textarea, form button {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hostel Stitching Service</h1>
+    <p>Quick, Convenient, and Cost-Effective Stitching Solutions</p>
+  </header>
+
+  <div class="container">
+    <section class="chart-section">
+      <h2>Survey: Is a Stitching Service Needed?</h2>
+      <canvas id="stitchingChart"></canvas>
+    </section>
+
+    <h2>Choose Your Service</h2>
+    <div class="service-options">
+      <div class="card">
+        <h3>Self-Service Station</h3>
+        <p>Use our equipped stitching station for quick fixes and DIY tailoring. Available 24/7.</p>
+      </div>
+      <div class="card">
+        <h3>Paid Tailor Service</h3>
+        <p>Need professional help? Drop your clothes and we’ll get them altered for you.</p>
+      </div>
+    </div>
+
+    <h2>Request a Stitching Service</h2>
+    <form>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+
+      <label for="room">Room Number</label>
+      <input type="text" id="room" placeholder="Enter your room number" required>
+
+      <label for="service">Select Service Type</label>
+      <select id="service" required>
+        <option value="">-- Select --</option>
+        <option value="self">Self-Service</option>
+        <option value="tailor">Paid Tailor</option>
+      </select>
+
+      <label for="details">Service Details</label>
+      <textarea id="details" rows="4" placeholder="E.g., Shorten sleeves, button fix, etc."></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <h2 style="margin-top: 3rem;">Feedback or Suggestions</h2>
+    <form>
+      <textarea placeholder="We'd love to hear your thoughts!" rows="4"></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Hostel Stitching Initiative | Designed by Team DT
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('stitchingChart');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Yes - 91.3%', 'No - 8.7%'],
+        datasets: [{
+          label: 'Stitching Service Usefulness',
+          data: [115, 12],
+          backgroundColor: ['#4CAF50', '#FF6384'],
+          borderColor: ['#ffffff', '#ffffff'],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `${context.label}: ${context.raw} responses`;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
